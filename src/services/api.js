@@ -46,3 +46,15 @@ export const getMovieGenres = async () => {
     return [];
   }
 };
+
+export const getMovieDetails = async (movieId) => {
+  const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`);
+  const data = await response.json();
+  return data;
+};
+
+export const getMovieVideos = async (movieId) => {
+  const response = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`);
+  const data = await response.json();
+  return data.results || [];
+};
